@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "b" {
-  bucket = "${vars.bucket_name}"
+  bucket = "${var.bucket_name}"
   acl    = "public-read"
   region = "ap-south-1"
   policy = <<EOF
@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "b" {
         "Effect":"Allow",
           "Principal": "*",
       "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::${vars.bucket_name}/*"]
+      "Resource":["arn:aws:s3:::${var.bucket_name}/*"]
     }
   ]
 }
